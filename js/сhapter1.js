@@ -49,14 +49,14 @@ let message;
 
 // let userlogin = prompt('логин', '');
 // if (userlogin == 'Я главный') {
-//   alert('«Здравствуйте!»');
+//   console.log('«Здравствуйте!»');
 // } else if (password == escape || password == null) {
-//   alert('Отменено');
+//   console.log('Отменено');
 // }
 // else if (userlogin == escape) {
-//   alert('Отменено');
+//   console.log('Отменено');
 // } else {
-//   alert('«Я вас не знаю».');
+//   console.log('«Я вас не знаю».');
 // }
 
 //=========================================================
@@ -69,12 +69,10 @@ let message;
 // }
 // let iw = 0;
 
-
 // while (iw < 3) {
 //   console.log(`number ${iw}!` );
 //   iw++;
 // }
-
 
 // let num;
 
@@ -82,20 +80,45 @@ let message;
 //   num = prompt("Введите число больше 100?", 0);
 // } while (num <= 100 && num);
 
-
 // let n = 10;
 
 // stop:
-// for (let i = 2; i <= n; i++) { 
+// for (let i = 2; i <= n; i++) {
 
-//   for (let j = 2; j < i; j++) { 
-//     if (i % j == 0) continue stop; 
+//   for (let j = 2; j < i; j++) {
+//     if (i % j == 0) continue stop;
 //   }
 
 //  console.log(i);
 // }
 
 //=========================================================
+
+// if (browser === 'Edge') {
+//   console.log("You've got the Edge!");
+// } else if (browser === 'Chrome' || 'Firefox' || 'Safari' || 'Opera') {
+//   console.log('Okay we support these browsers too');
+// } else {
+//   console.log('We hope that this page looks ok!');
+// }
+
+// const number = +prompt('Введите число между 0 и 3', '');
+
+// switch (number) {
+//   case 0:
+//     console.log("You've got the Edge!");
+//     break;
+
+//   case 1:
+//     console.log('Okay we support these browsers too');
+//     break;
+//   case 2:
+//   case 3:
+//     console.log('Okay we support these browsers too');
+//     break;
+//   default:
+//     console.log('We hope that this page looks ok!');
+// }
 
 //=========================================================
 
