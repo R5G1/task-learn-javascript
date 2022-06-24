@@ -130,16 +130,16 @@ function checkAge(age) {
   return age > 18 || confirm('Родители разрешили?');
 }
 
-function min(a,b) {
+function min(a, b) {
   return a > b ? a : b;
 }
 
-function pow(x,n) {
-  return x**n;
+function pow(x, n) {
+  return x ** n;
 }
 
 function ask(question, yes, no) {
-  if (confirm(question)) yes()
+  if (confirm(question)) yes();
   else no();
 }
 
@@ -150,3 +150,67 @@ function ask(question, yes, no) {
 // );
 
 //=========================================================
+
+// let user = {};
+// user.name = 'John';
+// user.surname = 'Smith';
+// user.name = 'Pete';
+// delete user.name;
+
+function isEmpty(obj) {
+  for (let key in obj) {
+    return false;
+  }
+  return true;
+}
+
+let salaries = {
+  John: 100,
+  Ann: 160,
+  Pete: 130,
+};
+
+function calc(obj) {
+  let sum = 0;
+  for (let key in obj) {
+    sum += obj[key];
+  }
+  return sum;
+}
+// console.log(calc(salaries));
+
+let menu = {
+  width: 200,
+  height: 300,
+  title: 'My menu',
+};
+
+function multiplyNumeric(obj) {
+  for (let key in obj) {
+    if (typeof obj[key] === 'number') {
+      obj[key] *= 2;
+    }
+  }
+  // console.log(obj);
+}
+
+// console.log(multiplyNumeric(menu));
+
+let calculator = {
+  sum() {
+    return this.a + this.b;
+  },
+
+  mul() {
+    return this.a * this.b;
+  },
+
+  read() {
+    this.a = +prompt('a?', 0);
+    this.b = +prompt('b?', 0);
+  }
+};
+// console.log(calculator.read());
+// console.log(calculator.sum());
+// console.log(calculator.mul());
+
