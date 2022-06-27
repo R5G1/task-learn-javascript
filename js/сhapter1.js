@@ -800,7 +800,7 @@ function sum(a) {
 function printNumbers(from, to) {
   let current = from;
 
-  let timerId = setInterval(function() {
+  let timerId = setInterval(function () {
     console.log(current);
     if (current == to) {
       clearInterval(timerId);
@@ -826,3 +826,52 @@ function printNumbers(from, to) {
 // printNumbers(5, 10);
 
 // Decorators and redirectors =============================================================================
+
+function spy(func) {
+  function wrapper(...args) {
+    wrapper.calls.push(args);
+    return func.apply(this, arguments);
+  }
+
+  wrapper.calls = [];
+
+  return wrapper;
+}
+
+function delay(f, ms) {
+  return function () {
+    setTimeout(() => f.apply(this, arguments), ms);
+  };
+}
+
+let f1000 = delay(console.log, 1000);
+
+f1000('test');
+
+function throttle(func, ms) {
+  let isThrottled = false,
+    savedArgs,
+    savedThis;
+
+  function wrapper() {
+    if (isThrottled) {
+      savedArgs = arguments;
+      savedThis = this;
+      return;
+    }
+
+    func.apply(this, arguments); 
+
+    isThrottled = true;
+
+    setTimeout(function () {
+      isThrottled = false; 
+      if (savedArgs) {
+        wrapper.apply(savedThis, savedArgs);
+        savedArgs = savedThis = null;
+      }
+    }, ms);
+  }
+
+  return wrapper;
+}
