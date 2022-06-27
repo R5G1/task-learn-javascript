@@ -761,3 +761,5 @@ function makeArmy() {
 let army = makeArmy();
 
 army[0]();
+
+// Function object, NFE =============================================================================
