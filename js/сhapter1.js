@@ -488,10 +488,14 @@ let arr5 = ['nap', 'teachers', 'cheaters', 'PAN', 'ear', 'era', 'hectares'];
 
 let map = new Map();
 
-map.set("name", "John");
+map.set('name', 'John');
 
 let keys = Array.from(map.keys());
 
-keys.push("more");
+keys.push('more');
 
-// console.log(keys); 
+// console.log(keys);
+
+// Object.keys =============================================================================
+
+
