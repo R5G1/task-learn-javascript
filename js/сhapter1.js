@@ -597,3 +597,7 @@ function formatDate(date) {
     return `${dayOfMonth}.${month}.${year} ${hour}:${minutes}`;
   }
 }
+
+// JSON.stringify =============================================================================
+
+
