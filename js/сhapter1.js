@@ -793,4 +793,6 @@ function sum(a) {
   return f;
 }
 
-alert(sum(1)(2));
+// console.log(sum(1)(2));
+
+// Decorators and redirectors =============================================================================
