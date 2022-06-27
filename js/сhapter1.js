@@ -208,10 +208,261 @@ let calculator = {
   read() {
     this.a = +prompt('a?', 0);
     this.b = +prompt('b?', 0);
-  }
+  },
 };
 // console.log(calculator.read());
 // console.log(calculator.sum());
 // console.log(calculator.mul());
 
-//=========================================================
+function Calculator() {
+  this.read = function () {
+    this.a = +prompt('a?', 0);
+    this.b = +prompt('b?', 0);
+  };
+
+  this.sum = function () {
+    return this.a + this.b;
+  };
+
+  this.mul = function () {
+    return this.a * this.b;
+  };
+}
+
+// let calculatorNew = new Calculator();
+// calculator.read();
+
+// console.log('sum=' + calculator.sum());
+// console.log('num=' + calculator.mul());
+
+//? Типы данных =========================================================
+
+// let a = +prompt("Введите первое число", "");
+// let b = +prompt("Введите второе число", "");
+
+// console.log( a + b );
+
+function readNumber() {
+  let a;
+  do {
+    a = prompt('Введите число', 0);
+  } while (!isFinite(a));
+
+  if (a === null || a === '') return null;
+
+  return +a;
+}
+
+// console.log(readNumber());
+
+function random(min, max) {
+  return min + Math.random() * (max - min);
+}
+// console.log(random(1, 5));
+
+function randomInteger(min, max) {
+  let rand = min + Math.random() * (max - min);
+  return Math.round(rand);
+}
+
+// console.log(randomInteger(1, 3));
+
+function ucFirst(str) {
+  let string = str[0].toUpperCase();
+  return string + str.slice(1);
+}
+// console.log(ucFirst('вася'));
+
+function checkSpam(str) {
+  let string = str.toLowerCase();
+
+  return string.includes('viagra') || string.includes('xxx');
+}
+
+// console.log(checkSpam('buy ViAgRA now'));
+
+function truncate(str, maxlength) {
+  return str.length > maxlength ? str.slice(0, maxlength - 1) + '…' : str;
+}
+
+// console.log(truncate("Вот, что мне хотелось бы сказать на эту тему:", 20));
+
+function extractCurrencyValue(str) {
+  return +str.slice(1);
+}
+// console.log(extractCurrencyValue('в10'))
+
+let styles = ['Джаз', 'Блюз'];
+styles.push('Рок-н-ролл');
+
+styles[1] = 'Классика';
+
+// console.log(styles.shift());
+
+styles.unshift('Рэп', 'Регги');
+// console.log(styles);
+
+function sumInput() {
+  let numbers = [];
+
+  while (true) {
+    let value = prompt('число', 0);
+
+    if (value === '' || value === null || !isFinite(value)) break;
+
+    numbers.push(+value);
+  }
+
+  let sum = 0;
+  for (let number of numbers) {
+    sum += number;
+  }
+  return sum;
+}
+
+// console.log(sumInput());
+
+function getMaxSubSum(arr) {
+  let maxSum = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    let sum = 0;
+    for (let j = i; j < arr.length; j++) {
+      sum += arr[j];
+      maxSum = Math.max(maxSum, sum);
+    }
+  }
+
+  return maxSum;
+}
+
+// console.log( getMaxSubSum([-1, 2, 3, -9]) );
+
+function camelize(str) {
+  if (str.includes('-') == true) {
+    let strin = str.split('');
+    console.log(strin);
+    for (let i = -1; i < strin.indexOf('-'); i++) {
+      strin.splice(
+        strin.indexOf('-'),
+        2,
+        strin[strin.indexOf('-') + 1].toUpperCase()
+      );
+      console.log(strin);
+    }
+    let strj = strin.join('');
+    alert(strj);
+    return strj;
+  }
+}
+
+function filterRange(arr, a, b) {
+  return arr.filter((item) => a <= item && item <= b);
+}
+
+let arr = [5, 3, 8, 1];
+
+let filtered = filterRange(arr, 1, 4);
+
+// console.log(filtered);
+
+let arr2 = [5, 2, 1, -10, 8];
+
+arr2.sort((a, b) => b - a);
+
+// console.log( arr );
+
+let arr3 = ['HTML', 'JavaScript', 'CSS'];
+function copySorted(arr3) {
+  return arr3.slice().sort();
+}
+
+let sorted = copySorted(arr3);
+
+// console.log( sorted );
+// console.log( arr3 );
+
+function Calculator() {
+  this.methods = {
+    '-': (a, b) => a - b,
+    '+': (a, b) => a + b,
+  };
+
+  this.calculate = function (str) {
+    let split = str.split(' '),
+      a = +split[0],
+      op = split[1],
+      b = +split[2];
+
+    return this.methods[op](a, b);
+  };
+
+  this.addMethod = function (name, func) {
+    this.methods[name] = func;
+  };
+}
+
+//================================================================
+
+let vasya = { name: 'Вася', age: 25 };
+let petya = { name: 'Петя', age: 30 };
+let masha = { name: 'Маша', age: 28 };
+
+let users = [vasya, petya, masha];
+
+let names = users.map((item) => item.name);
+
+// console.log(names);
+
+let usersMap = users.map((user) => ({
+  fullName: `${user.name} ${user.surname}`,
+  id: user.id,
+}));
+
+function sortByAge(arr) {
+  arr.sort((a, b) => (a.age > b.age ? 1 : -1));
+}
+
+// sortByAge(users);
+
+let arr4 = [1, 2, 3];
+
+function shuffle(array) {
+  array.sort(() => Math.random() - 0.5);
+}
+
+// console.log(arr4);
+
+function getAverageAge(users) {
+  return users.reduce((prev, user) => prev + user.age, 0) / users.length;
+}
+
+// console.log(getAverageAge(users) );
+
+function unique(arr) {
+  let result = [];
+
+  for (let str of arr) {
+    if (!result.includes(str)) {
+      result.push(str);
+    }
+  }
+
+  return result;
+}
+
+let strings = [
+  'кришна',
+  'кришна',
+  'харе',
+  'харе',
+  'харе',
+  'харе',
+  'кришна',
+  'кришна',
+  ':-O',
+];
+
+console.log(unique(strings));
+
+//=============================================================================
