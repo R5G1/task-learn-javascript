@@ -710,4 +710,54 @@ function printReverseList(list) {
 
 // printReverseList(list);
 
-// Recursion and stack =============================================================================
+// Closure =============================================================================
+
+function sum(a) {
+  return function (b) {
+    return a + b;
+  };
+}
+
+// console.log(sum(1)(2));
+
+function inArray(arr) {
+  return function (x) {
+    return arr.includes(x);
+  };
+}
+
+let arrB = [1, 2, 3, 4, 5, 6, 7];
+// console.log(arrB.filter(inArray([1, 2, 10])));
+
+let usersB = [
+  { name: 'John', age: 20, surname: 'Johnson' },
+  { name: 'Pete', age: 18, surname: 'Peterson' },
+  { name: 'Ann', age: 19, surname: 'Hathaway' },
+];
+
+function byField(field) {
+  return (a, b) => (a[field] > b[field] ? 1 : -1);
+}
+
+usersB.sort(byField('name'));
+usersB.forEach((userB) => alert(userB.name));
+
+function makeArmy() {
+  let shooters = [];
+
+  let i = 0;
+  while (i < 10) {
+    let j = i;
+    let shooter = function () {
+      console.log(j);
+    };
+    shooters.push(shooter);
+    i++;
+  }
+
+  return shooters;
+}
+
+let army = makeArmy();
+
+army[0]();
