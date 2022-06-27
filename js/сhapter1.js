@@ -739,8 +739,8 @@ function byField(field) {
   return (a, b) => (a[field] > b[field] ? 1 : -1);
 }
 
-usersB.sort(byField('name'));
-usersB.forEach((userB) => alert(userB.name));
+// usersB.sort(byField('name'));
+// usersB.forEach((userB) => console.log(userB.name));
 
 function makeArmy() {
   let shooters = [];
@@ -758,8 +758,39 @@ function makeArmy() {
   return shooters;
 }
 
-let army = makeArmy();
+// let army = makeArmy();
 
-army[0]();
+// army[0]();
 
 // Function object, NFE =============================================================================
+
+function makeCounter() {
+  let count = 0;
+
+  function counter() {
+    return count++;
+  }
+
+  counter.set = (value) => (count = value);
+
+  counter.decrease = () => count--;
+
+  return counter;
+}
+
+function sum(a) {
+  let currentSum = a;
+
+  function f(b) {
+    currentSum += b;
+    return f;
+  }
+
+  f.toString = function () {
+    return currentSum;
+  };
+
+  return f;
+}
+
+alert(sum(1)(2));
