@@ -844,9 +844,9 @@ function delay(f, ms) {
   };
 }
 
-let f1000 = delay(console.log, 1000);
+// let f1000 = delay(console.log, 1000);
 
-f1000('test');
+// f1000('test');
 
 function throttle(func, ms) {
   let isThrottled = false,
