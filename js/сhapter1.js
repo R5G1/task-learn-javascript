@@ -860,12 +860,12 @@ function throttle(func, ms) {
       return;
     }
 
-    func.apply(this, arguments); 
+    func.apply(this, arguments);
 
     isThrottled = true;
 
     setTimeout(function () {
-      isThrottled = false; 
+      isThrottled = false;
       if (savedArgs) {
         wrapper.apply(savedThis, savedArgs);
         savedArgs = savedThis = null;
@@ -875,3 +875,26 @@ function throttle(func, ms) {
 
   return wrapper;
 }
+
+// Context anchoring  =============================================================================
+
+function askPassword(ok, fail) {
+  let password = prompt("Password?", '');
+  if (password == "rockstar") ok();
+  else fail();
+}
+
+let userAsk = {
+  name: 'Вася',
+
+  loginOk() {
+    alert(`${this.name} logged in`);
+  },
+
+  loginFail() {
+    alert(`${this.name} failed to log in`);
+  },
+
+};
+
+// askPassword(userAsk.loginOk.bind(user), userAsk.loginFail.bind(user));
