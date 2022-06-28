@@ -7,13 +7,19 @@ document.body.lastElementChild;
 document.body.lastElementChild.lastElementChild;
 
 let table = document.body.children[2];
-console.log(table.rows.length);
 
 for (let i = 0; i < table.rows.length; i++) {
   let row = table.rows[i];
   row.cells[i].style.backgroundColor = 'red';
 } 
 
-// Search =============================================================================
+// document Attributes and properties =============================================================================
+
+let elem = document.querySelector('[data-widget-name]');
+
+// console.log(elem.dataset.widgetName);
 
 
+let link = document.querySelector('a');
+
+link.style.color = 'orange';
