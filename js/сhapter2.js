@@ -168,3 +168,25 @@ function showNotification({ top = 0, right = 0, className, html }) {
 //     className: 'welcome',
 //   });
 // }, 1000);
+
+// document scroll =============================================================================
+
+let scrollBottom = elem.scrollHeight - elem.scrollTop - elem.clientHeight;
+
+// console.log(scrollBottom);
+
+function createScroll() {
+  let div = document.createElement('div');
+
+  div.style.overflowY = 'scroll';
+  div.style.width = '50px';
+  div.style.height = '50px';
+
+  document.body.append(div);
+  let scrollWidth = div.offsetWidth - div.clientWidth;
+
+  div.remove();
+
+  console.log(scrollWidth);
+}
+// createScroll() 
