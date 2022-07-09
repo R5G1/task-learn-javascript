@@ -898,3 +898,6 @@ let userAsk = {
 };
 
 // askPassword(userAsk.loginOk.bind(user), userAsk.loginFail.bind(user));
+
+// Prototype  =============================================================================
+
