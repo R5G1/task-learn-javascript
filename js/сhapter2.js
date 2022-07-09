@@ -218,4 +218,4 @@ let fieldCoords = field.getBoundingClientRect();
       ]
     ];
 
-    console.log(answer.join('  '));
+    // console.log(answer.join('  '));

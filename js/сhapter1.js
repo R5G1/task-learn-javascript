@@ -879,8 +879,8 @@ function throttle(func, ms) {
 // Context anchoring  =============================================================================
 
 function askPassword(ok, fail) {
-  let password = prompt("Password?", '');
-  if (password == "rockstar") ok();
+  let password = prompt('Password?', '');
+  if (password == 'rockstar') ok();
   else fail();
 }
 
@@ -888,16 +888,117 @@ let userAsk = {
   name: 'Вася',
 
   loginOk() {
-    alert(`${this.name} logged in`);
+    console.log(`${this.name} logged in`);
   },
 
   loginFail() {
-    alert(`${this.name} failed to log in`);
+    console.log(`${this.name} failed to log in`);
   },
-
 };
 
 // askPassword(userAsk.loginOk.bind(user), userAsk.loginFail.bind(user));
 
 // Prototype  =============================================================================
 
+function testPrototype1() {
+  let head = {
+    glasses: 1,
+  };
+
+  let table = {
+    pen: 3,
+    __proto__: head,
+  };
+
+  let bed = {
+    sheet: 1,
+    pillow: 2,
+    __proto__: table,
+  };
+
+  let pockets = {
+    money: 2000,
+    __proto__: bed,
+  };
+
+  console.log(pockets.pen);
+  console.log(bed.glasses);
+  console.log(table.money);
+}
+// testPrototype()
+
+function testPrototype2() {
+  let hamster = {
+    stomach: [],
+
+    eat(food) {
+      this.stomach.push(food);
+    },
+  };
+
+  let speedy = {
+    __proto__: hamster,
+    stomach: [],
+  };
+
+  let lazy = {
+    __proto__: hamster,
+    stomach: [],
+  };
+
+  speedy.eat('apple');
+  console.log(speedy.stomach);
+
+  console.log(lazy.stomach);
+}
+
+// testPrototype2()
+
+function testPrototype3() {
+  Function.prototype.defer = function (ms) {
+    setTimeout(this, ms);
+  };
+
+  function f() {
+    console.log('Hello!');
+  }
+
+  f.defer(1000);
+}
+// testPrototype3()
+
+function testPrototype4() {
+  Function.prototype.defer = function (ms) {
+    let f = this;
+    return function (...args) {
+      setTimeout(() => f.apply(this, args), ms);
+    };
+  };
+
+  function f(a, b) {
+    console.log(a + b);
+  }
+
+  f.defer(1000)(1, 2);
+}
+// testPrototype4()
+
+function testPrototype5() {
+  let dictionary = Object.create(null, {
+    toString: {
+      value() {
+        return Object.keys(this).join();
+      },
+    },
+  });
+
+  dictionary.apple = 'Apple';
+  dictionary.__proto__ = 'test';
+
+  for (let key in dictionary) {
+    console.log(key);
+  }
+
+  console.log(dictionary);
+}
+// testPrototype5()
